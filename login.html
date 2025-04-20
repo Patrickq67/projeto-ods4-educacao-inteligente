@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Plataforma Educacional</title>
+  <link rel="stylesheet" href="css/login-style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Login</h1>
+
+    <form>
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" required>
+
+      <div class="button-group">
+        <button type="button" onclick="loginAluno()">Entrar como Aluno</button>
+        <button type="button" onclick="loginProfessor()">Entrar como Professor</button>
+      </div>
+    </form>
+
+    <p><a href="index.html">Voltar à página inicial</a></p>
+  </div>
+
+  <script>
+    function loginAluno() {
+      window.location.href = "aluno/home-aluno.html";
+    }
+    function loginProfessor() {
+      window.location.href = "professor/home-professor.html";
+    }
+  </script>
+
+</body>
+</html>

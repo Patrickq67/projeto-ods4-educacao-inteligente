@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plataforma ODS4 - Educação Personalizada</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://kit.fontawesome.com/02ef7094fd.js" crossorigin="anonymous"></script>
+  </head>
+  <body id="home">
+    <!-- Navbar -->
+    <nav id="navbar">
+      <h1 class="logo">
+        <span class="text-primary"><i class="fas fa-graduation-cap"></i> ODS4</span> Edu
+      </h1>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <!-- Showcase -->
+    <header id="showcase">
+      <div class="showcase-content">
+        <h1 class="l-heading">Transformando a Educação</h1>
+        <p class="lead">Uma plataforma voltada para personalizar o aprendizado com tecnologia e propósito.</p>
+        <a href="#sobre" class="btn">Saiba Mais</a>
+      </div>
+    </header>
+
+    <!-- Seção Sobre o Prjeto -->
+    <section id="sobre" class="bg-light py-2">
+      <div class="container">
+        <h2 class="m-heading text-center"><span class="text-primary">Sobre</span> o Projeto</h2>
+        <p class="text-center">
+          A Plataforma ODS4 tem como objetivo apoiar o aprendizado personalizado com foco na qualidade da educação.
+          Professores e alunos interagem em um ambiente intuitivo, com feedback baseado em dados reais de desempenho.
+        </p>
+      </div>
+    </section>
+
+        <!-- Seção Recursos -->
+        <section id="recursos" class="py-2">
+          <div class="container">
+            <h2 class="m-heading text-center"><span class="text-primary">Recursos</span> da Plataforma</h2>
+            <div class="items">
+              <div class="item">
+                <i class="fas fa-user-graduate fa-2x"></i>
+                <h3>Espaço do Aluno</h3>
+                <p>Acesso a quizzes personalizados, feedback detalhado e histórico de desempenho.</p>
+              </div>
+              <div class="item">
+                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+                <h3>Espaço do Professor</h3>
+                <p>Ferramentas para analisar o desempenho dos alunos e sugerir intervenções personalizadas.</p>
+              </div>
+              <div class="item">
+                <i class="fas fa-chart-line fa-2x"></i>
+                <h3>Análise de Dados</h3>
+                <p>Uso de machine learning para detectar padrões de erro e adaptar o ensino às necessidades.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+<!-- Quem Nós Somos-->
+<section id="nos">
+  <div class="nos-img"></div>
+  <div class="nos-text bg-dark p-2">
+    <h2 class="m-heading"><span class="text-primary">Quem</span> Nós Somos</h2>
+    <p>
+      Somos cinco estudantes da <strong>Universidade Federal do Rio Grande do Sul (UFRGS)</strong>, atualmente cursando
+      <strong>Ciência da Computação</strong> e matriculados na disciplina <strong>Engenharia de Software</strong>,
+      ministrada pela professora <strong>Leticia dos Santos Machado</strong>.
+    </p>
+    <h3>Nossa Equipe</h3>
+    <ul class="list">
+      <li>Patrick Alves</li>
+      <li>Leonardo Junqueira</li>
+      <li>Luís Dawa</li>
+      <li>Pedro Bavaresco</li>
+      <li>Vitor Chassot</li>
+    </ul>
+    <p><em>INF01127 - Engenharia de Software N - Turma C (2025/1)</em></p>
+  </div>
+</section>
+
+<!--Section: Instituto-->
+<section id="instituto" class="py-1 bg-light">
+  <div class="container">
+    <h2 class="m-heading text-center">
+      <span class="text-primary">Nossa</span> Instituição
+    </h2>
+    <div class="items py-1">
+      <div class="instituto-logo">
+        <a href="http://www.ufrgs.br/ufrgs/inicial" target="_blank">
+          <img src="./img/logos/logo1.png" alt="Logo Instituto 1" />
+        </a>
+      </div>
+      <div class="instituto-logo">
+        <a href="https://www.inf.ufrgs.br/site/" target="_blank">
+          <img src="./img/logos/logo2.png" alt="Logo Instituto 2" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Contato -->
+    <section id="contato">
+      <div class="contato-form bg-primary p-2">    
+        <h2 class="m-heading"><span class="text-dark">Fale</span> Conosco</h2>
+        <p>Preencha o formulário abaixo e responderemos em breve:</p>
+        <form action="#">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" placeholder="Digite seu nome" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Digite seu email" />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" placeholder="Digite sua mensagem"></textarea>
+          </div>
+          <input type="submit" value="Enviar" class="btn btn-dark" />
+        </form>
+      </div>
+      <div class="map"></div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="main-footer" class="bg-dark text-center py-1">
+      <div class="container">
+        <p>© 2025 Plataforma ODS4 - Todos os direitos reservados</p>
+      </div>
+
+    <!--Jquery CDN-->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"
+  ></script>
+
+   <!--Local JS-->
+   <script src="js/main.js"></script>
+
+   <!--Google Maps-->
+   <script
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3L_Luq8qz9ikc31c717qHQ1HmjIiPfbw&callback=initMap"
+   async
+   defer
+  ></script>
+
+    </footer>
+  </body>
+</html>

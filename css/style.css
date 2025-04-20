@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --linear-grad: linear-gradient(to right, #141E30, #243B55);
+  --grad-clr1: #141E30;
+  --grad-clr2: #243B55;
+  --highlight: #ff8c00;
+  --light-bg: #f4f4f4;
+  --dark-bg: #1a1a1a;
+  --light-text: #f4f4f4;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
+  background: var(--linear-grad);
+  color: var(--light-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin: 0.7rem 0;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--highlight);
+}
+
+.text-dark {
+  color: #ccc;
+}
+
+.bg-primary {
+  background: var(--highlight);
+  color: #fff;
+}
+
+.bg-light {
+  background: var(--light-bg);
+  color: #333;
+}
+
+.bg-dark {
+  background: var(--dark-bg);
+  color: #fff;
+}
+
+.l-heading {
+  font-size: 4rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.m-heading {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.lead {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.list {
+  margin: 0.5rem 0;
+  list-style: none;
+}
+
+.list li {
+  padding: 0.5rem 0;
+  border-bottom: #444 dotted 1px;
+}
+
+/* Paddings */
+.p-1 {
+  padding: 1.5rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.py-1 {
+  padding: 1.5rem 0;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+/* Botão */
+.btn {
+  display: inline-block;
+  color: #fff;
+  background: var(--highlight);
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #e67600;
+}
+
+.btn-dark {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Navbar */
+#navbar {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #333;
+  color: #fff;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 1rem;
+}
+
+#navbar ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+#navbar ul li a {
+  color: #fff;
+  padding: 0.75rem;
+  margin: 0 0.25rem;
+  font-weight: 600;
+}
+
+#navbar ul li a:hover {
+  color: var(--highlight);
+}
+
+/* Showcase */
+#showcase {
+  background: url('../img/showcase.jpeg') no-repeat center center/cover;
+  height: 100vh;
+  color: #fff;
+}
+
+#showcase .showcase-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+
+  /* Overlay */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Section: Recursos */
+#recursos .items {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#recursos .items .item {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  background: #1f2a3a;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#recursos .items .item i {
+  background: var(--highlight);
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Section: Quem Nós Somos */
+#nos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#nos div {
+  flex: 1;
+}
+
+#nos .nos-img {
+  background: url('../img/people.webp') no-repeat center center/cover;
+}
+
+/* Section: Instituto */
+#instituto .items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7rem;
+}
+
+#instituto .instituto-logo {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#instituto .instituto-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+#instituto .instituto-logo:hover img {
+  transform: scale(1.05);
+}
+
+
+/* Section: Contato */
+#contato {
+  display: flex;
+}
+
+#contato .map,
+#contato .contato-form {
+  flex: 1;
+}
+
+#contato .contato-form {
+  flex: 0.5;
+  padding: 2rem;
+}
+
+#contato .contato-form .form-group {
+  margin: 0.75rem 0;
+}
+
+#contato .contato-form label {
+  display: block;
+}
+
+#contato .contato-form input,
+#contato .contato-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+}
