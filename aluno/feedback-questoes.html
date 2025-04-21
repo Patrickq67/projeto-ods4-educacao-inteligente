@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feedback</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #141E30, #243B55);
+      color: white;
+      padding: 20px 30px;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    main {
+      padding: 30px;
+    }
+
+    .feedback-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .feedback-controls select {
+      padding: 5px 10px;
+    }
+
+    .question-feedback {
+      background: white;
+      border: 1px solid #ccc;
+      border-left: 5px solid #93cb52;
+      border-radius: 6px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+    }
+
+    .question-feedback.erro {
+      border-left-color: #d60000;
+    }
+
+    .question-feedback h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #141E30;
+    }
+
+    .status {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .status.ok {
+      color: #2e7d32;
+    }
+
+    .status.erro {
+      color: #d60000;
+    }
+
+    .classificacoes {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .resumo-box {
+      padding: 30px;
+      background: #fff;
+      border-top: 2px solid #ccc;
+    }
+
+    .resumo-box h2 {
+      margin-bottom: 20px;
+      color: #141E30;
+    }
+
+    .resumo-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .resumo-info {
+      font-size: 14px;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .resumo-info .nota-final {
+      font-size: 28px;
+      font-weight: bold;
+      color: #243B55;
+      margin-bottom: 10px;
+    }
+
+    .grafico-container {
+      width: 250px;
+      max-width: 100%;
+    }
+
+    .grafico-container canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h2>Plataforma ODS4 - Educação Personalizada - Feedback</h2>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Tempo total da prova -->
+    <p style="font-size: 15px; margin-bottom: 20px;">
+      <strong>⏱️ Tempo total da prova:</strong> 00:03:17
+    </p>
+
+    <!-- Filtro de classificações -->
+    <div class="feedback-controls">
+      <label>Mostrar classificação:
+        <select id="filtro-classificacao">
+          <option value="geral">Geral</option>
+          <option value="especifica">Específica</option>
+          <option value="ambas" selected>Ambas</option>
+        </select>
+      </label>
+    </div>
+
+    <!-- Feedback das Questões -->
+    <div class="question-feedback acerto">
+      <h3>Questão 1 (UFRGS 2024)</h3>
+      <p>Qual o valor de x na equação 2x + 3 = 7?</p>
+      <p class="status ok">✅ Sua resposta está correta!</p>
+      <p><strong>Tempo gasto:</strong> 00:01:12</p>
+      <div class="classificacoes">
+        <strong>Classificação Geral:</strong> Equações<br>
+        <strong>Classificação Específica:</strong> Equações do 1º grau &gt; Isolamento de variável
+      </div>
+    </div>
+
+    <div class="question-feedback erro">
+      <h3>Questão 2 (UFRGS 2024)</h3>
+      <p>Qual a soma da PG infinita de razão 1/2 cujo primeiro termo é 4?</p>
+      <p class="status erro">❌ Você errou essa questão.</p>
+      <p><strong>Tempo gasto:</strong> 00:01:45</p>
+      <div class="classificacoes">
+        <strong>Classificação Geral:</strong> Progressões<br>
+        <strong>Classificação Específica:</strong> Progressões Geométricas &gt; Soma infinita da PG
+      </div>
+    </div>
+  </main>
+
+  <!-- Painel Resumo -->
+  <section class="resumo-box">
+    <h2>Meu desempenho na prova</h2>
+    <div class="resumo-content">
+      <div class="resumo-info">
+        <div class="nota-final">0.25</div>
+        <p>Total de questões: <strong>15</strong></p>
+        <p>Questões que acertei: <strong style="color:green;">1</strong></p>
+        <p>Questões que errei: <strong style="color:red;">2</strong></p>
+        <p>Questões em branco: <strong style="color:#888;">3</strong></p>
+        <p>Aproveitamento: <strong style="color:blue;">17%</strong></p>
+      </div>
+      <div class="grafico-container">
+        <canvas id="graficoResumo"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Script do Gráfico -->
+  <script>
+    const ctx = document.getElementById('graficoResumo').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Acertos', 'Erros', 'Em branco'],
+        datasets: [{
+          label: 'Distribuição',
+          data: [1, 2, 3],
+          backgroundColor: ['#4CAF50', '#F44336', '#E0E0E0'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        cutout: '60%',
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- Script do Filtro -->
+  <script>
+    const selectFiltro = document.getElementById("filtro-classificacao");
+    const todas = document.querySelectorAll(".classificacoes");
+
+    selectFiltro.addEventListener("change", () => {
+      todas.forEach(div => {
+        const html = div.innerHTML;
+        const partes = html.split("<br>");
+        if (selectFiltro.value === "geral") {
+          div.innerHTML = partes[0];
+        } else if (selectFiltro.value === "especifica") {
+          div.innerHTML = partes[1];
+        } else {
+          div.innerHTML = partes.join("<br>");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
