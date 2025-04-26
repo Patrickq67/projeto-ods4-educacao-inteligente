@@ -6,6 +6,7 @@
     <title>Plataforma ODS4 - Educação Personalizada</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://kit.fontawesome.com/02ef7094fd.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body id="home">
     <!-- Navbar -->
@@ -32,7 +33,7 @@
     </header>
 
     <!-- Seção Sobre o Prjeto -->
-    <section id="sobre" class="bg-light py-2">
+    <section id="sobre" class="bg-light py-2" data-aos="fade-up">
       <div class="container">
         <h2 class="m-heading text-center"><span class="text-primary">Sobre</span> o Projeto</h2>
         <p class="text-center">
@@ -43,21 +44,21 @@
     </section>
 
         <!-- Seção Recursos -->
-        <section id="recursos" class="py-2">
+        <section id="recursos" class="py-2" data-aos="fade-up">
           <div class="container">
             <h2 class="m-heading text-center"><span class="text-primary">Recursos</span> da Plataforma</h2>
             <div class="items">
-              <div class="item">
+              <div class="item" data-aos="fade-right">
                 <i class="fas fa-user-graduate fa-2x"></i>
                 <h3>Espaço do Aluno</h3>
                 <p>Acesso a quizzes personalizados, feedback detalhado e histórico de desempenho.</p>
               </div>
-              <div class="item">
+              <div class="item" data-aos="fade-up">
                 <i class="fas fa-chalkboard-teacher fa-2x"></i>
                 <h3>Espaço do Professor</h3>
                 <p>Ferramentas para analisar o desempenho dos alunos e sugerir intervenções personalizadas.</p>
               </div>
-              <div class="item">
+              <div class="item" data-aos="fade-left">
                 <i class="fas fa-chart-line fa-2x"></i>
                 <h3>Análise de Dados</h3>
                 <p>Uso de machine learning para detectar padrões de erro e adaptar o ensino às necessidades.</p>
@@ -110,11 +111,11 @@
 </section>
 
     <!-- Contato -->
-    <section id="contato">
+    <section id="contato" data-aos="zoom-in">
       <div class="contato-form bg-primary p-2">    
         <h2 class="m-heading"><span class="text-dark">Fale</span> Conosco</h2>
         <p>Preencha o formulário abaixo e responderemos em breve:</p>
-        <form action="#">
+        <form id="form-contato" action="#">
           <div class="form-group">
             <label for="name">Nome</label>
             <input type="text" id="name" placeholder="Digite seu nome" />
@@ -134,10 +135,18 @@
     </section>
 
     <!-- Rodapé -->
-    <footer id="main-footer" class="bg-dark text-center py-1">
+    <footer id="main-footer" class="bg-dark text-center py-3">
       <div class="container">
         <p>© 2025 Plataforma ODS4 - Todos os direitos reservados</p>
+        <p style="font-size: 0.9rem;">
+          Projeto aberto no GitHub: 
+          <a href="https://github.com/Patrickq67/projeto-ods4-educacao-inteligente.git" target="_blank" style="color: #ff8c00; font-weight: 500;">
+            Acesse o repositório
+          </a>
+        </p>
       </div>
+    </footer>
+    
 
     <!--Jquery CDN-->
     <script
@@ -157,5 +166,14 @@
   ></script>
 
     </footer>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, 
+    once: true      
+  });
+</script>
   </body>
 </html>

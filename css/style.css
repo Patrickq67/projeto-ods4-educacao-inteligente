@@ -231,7 +231,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 7rem;
+  gap: clamp(14rem, 8vw, 1rem);
 }
 
 #instituto .instituto-logo {
@@ -254,6 +254,7 @@ p {
 #instituto .instituto-logo:hover img {
   transform: scale(1.05);
 }
+
 
 
 /* Section: Contato */

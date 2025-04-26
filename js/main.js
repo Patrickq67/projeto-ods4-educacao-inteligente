@@ -18,16 +18,40 @@ window.addEventListener('scroll', function () {
 });
 
 // jquery Smooth Scrolling
-$('#navbar a, .btn').on('click', function (e) {
-    if (this.hash !== '') {
-        e.preventDefault();
-        const hash = this.hash;
-        $('html, body').animate(
-            {
-                scrollTop: $(hash).offset().top - 100
-            },
-            800
-        );
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+
+// Validação do formulário de contato
+document.getElementById('form-contato').addEventListener('submit', function (e) {
+    e.preventDefault();
+  
+    const nome = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensagem = document.getElementById('message').value.trim();
+  
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  
+    if (!nome || !email || !mensagem) {
+      alert('Por favor, preencha todos os campos.');
+      return;
     }
-});
+  
+    if (!emailValido) {
+      alert('Por favor, insira um email válido.');
+      return;
+    }
+  
+    alert('Mensagem enviada com sucesso!');
+    this.reset(); // limpa os campos após envio
+  });
+
+
 
