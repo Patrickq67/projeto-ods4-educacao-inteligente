@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Home do Aluno</title>
-  <link rel="stylesheet" href="../css/home-aluno-style.css">
+  <link rel="stylesheet" href="css-aluno/styles-home-aluno.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <div class="container">
     <header>
       <h1>Bem-vindo(a), Aluno!</h1>
       <nav>
         <ul>
-          <li><a href="page_questoes.html">Iniciar Questionário</a></li>
-          <li><a href="feedback-aluno.html">Ver Feedback</a></li>
+          <li><a href="page-questoes.html">Iniciar Questionário</a></li>
+          <li><a href="feedback-questoes.html">Ver Feedback</a></li>
           <li><a href="../index.html">Sair</a></li>
         </ul>
       </nav>
@@ -24,8 +23,36 @@
 
     <main>
       <section>
-        <h2>O que você deseja fazer?</h2>
-        <p>Escolha uma das opções acima para começar sua jornada de aprendizado!</p>
+        <h2>Selecione os critérios para iniciar o questionário:</h2>
+        <div class="filtros">
+          <input type="text" id="palavraChave" placeholder="🔍 Palavra-chave" />
+          <select id="filtroAno">
+            <option value="">Ano</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </select>
+          <select id="filtroBanca">
+            <option value="">Banca</option>
+            <option value="UFRGS">UFRGS</option>
+            <option value="ENEM">ENEM</option>
+          </select>
+          <select id="filtroDisciplina">
+            <option value="">Disciplina</option>
+            <option value="Matemática">Matemática</option>
+            <option value="Português">Português</option>
+          </select>
+          <select id="filtroNivel">
+            <option value="">Nível</option>
+            <option value="Fácil">Fácil</option>
+            <option value="Médio">Médio</option>
+            <option value="Difícil">Difícil</option>
+          </select>
+          <button onclick="filtrarQuestoes()">Filtrar Questões</button>
+        </div>
+      </section>
+      <section id="resultadoFiltro">
+        <!-- Questões filtradas serão exibidas aqui -->
       </section>
     </main>
 
@@ -34,5 +61,7 @@
     </footer>
   </div>
 
+  <script src="dados/questoes.js"></script>
+  <script src="main-aluno.js"></script>
 </body>
 </html>
