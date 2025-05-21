@@ -21,47 +21,60 @@
       </nav>
     </header>
 
-    <main>
-      <section>
-        <h2>Selecione os critérios para iniciar o questionário:</h2>
-        <div class="filtros">
-          <input type="text" id="palavraChave" placeholder="🔍 Palavra-chave" />
-          <select id="filtroAno">
-            <option value="">Ano</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-          </select>
-          <select id="filtroBanca">
-            <option value="">Banca</option>
-            <option value="UFRGS">UFRGS</option>
-            <option value="ENEM">ENEM</option>
-          </select>
-          <select id="filtroDisciplina">
-            <option value="">Disciplina</option>
-            <option value="Matemática">Matemática</option>
-            <option value="Português">Português</option>
-          </select>
-          <select id="filtroNivel">
-            <option value="">Nível</option>
-            <option value="Fácil">Fácil</option>
-            <option value="Médio">Médio</option>
-            <option value="Difícil">Difícil</option>
-          </select>
-          <button onclick="filtrarQuestoes()">Filtrar Questões</button>
-        </div>
-      </section>
-      <section id="resultadoFiltro">
-        <!-- Questões filtradas serão exibidas aqui -->
-      </section>
-    </main>
+  <main>
+    <section>
+      <h2>Selecione os critérios para iniciar o questionário:</h2>
+      <div class="filtros">
+      <form id="filtros">
+        <input type="text" id="palavraChave" placeholder="🔍 Palavra-chave">
+        <select id="filtroAno">
+          <option value="">Ano</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+        </select>
 
-    <footer>
-      <p>Plataforma ODS4 - Educação Personalizada</p>
-    </footer>
-  </div>
+        
+        <select id="filtroBanca">
+          <option value="">Banca</option>
+          <option value="UFRGS">UFRGS</option>
+          <option value="ENEM">ENEM</option>
+        </select>
+
+        
+        <select id="filtroDisciplina">
+          <option value="">Disciplina</option>
+          <option value="Matemática">Matemática</option>
+          <option value="Português">Português</option>
+        </select>
+
+        
+        <select id="filtroNivel">
+          <option value="">Nível</option>
+          <option value="Fácil">Fácil</option>
+          <option value="Médio">Médio</option>
+          <option value="Difícil">Difícil</option>
+        </select>
+
+        <button type="button" class="BotaolimpaFiltro" onclick="limpaFiltro()">Limpa Filtros</button>
+        <button type="button" onclick="filtrarERenderizar()">Filtrar</button>
+
+      </form>
+    </section>
+
+    <section id="questoesFiltradas">
+      <br><h2>Filtros Aplicados</h2>
+      <div id="filtrosAplicadosContainer" class="filtros-aplicados"></div>
+      <div id="mensagem-sem-questoes" style="margin-top: 20px; color: red; font-weight: bold;"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Plataforma ODS4 - Educação Personalizada</p>
+  </footer>
 
   <script src="dados/questoes.js"></script>
-  <script src="main-aluno.js"></script>
+  <script src="home-aluno.js"></script>
 </body>
 </html>

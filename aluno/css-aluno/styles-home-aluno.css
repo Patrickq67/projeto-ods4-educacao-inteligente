@@ -73,31 +73,81 @@ footer {
   color: #ccc;
 }
 
-.filtros {
+#filtros {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 1rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.filtros input,
-.filtros select,
-.filtros button {
+#filtros input,
+#filtros select,
+#filtros button {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
+  flex: 1 1 150px; /* Flexível com largura mínima */
+  min-width: 150px;
+  box-sizing: border-box;
 }
 
-.filtros button {
+#filtros select {
+  background-color: white;
+}
+
+#filtros button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s ease;
+  flex: 1 1 150px;
 }
 
-.filtros button:hover {
+#filtros button:hover {
   background-color: #0056b3;
+}
+
+.filtros-aplicados {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filtro-tag {
+  background-color: #eef1f5;
+  color: hsl(0, 0%, 20%);
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.filtro-tag button {
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+
+#filtros .BotaolimpaFiltro {
+  background-color: #e53935; /* vermelho vibrante */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#filtros .BotaolimpaFiltro:hover {
+  background-color: #b71c1c; /* tom mais escuro no hover */
 }

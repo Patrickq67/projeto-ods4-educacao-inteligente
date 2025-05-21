@@ -1,4 +1,8 @@
-const questoesFiltradas = questoes;
+
+//const filtrosSalvos = JSON.parse(localStorage.getItem('filtrosAplicados')) || {};
+
+
+const questoesFiltradas = JSON.parse(localStorage.getItem('questoesComFiltro')) || [];
 
 // ---------------------------------- Filtragem ----------------------------------------
 
@@ -34,10 +38,10 @@ function carregarQuestao() {
   clearInterval(intervaloTempoQuestao);
   tempoQuestaoAtual = parseInt(localStorage.getItem(`tempo_questao_${questaoAtual}`)) || 0;
 
-  const q = questoes[questaoAtual];
+  const q = questoesFiltradas[questaoAtual];
 
   // Breadcrumb
-  document.getElementById('breadcrumb').innerText = `Q${q.id} | ${q.disciplina} > ${q.banca} ${q.ano}`;
+  document.getElementById('breadcrumb').innerText = `Questão ${q.id} | ${q.disciplina} > ${q.banca} ${q.ano}`;
 
   // Texto da questão
   const perguntaEl = document.getElementById('pergunta');
@@ -86,7 +90,7 @@ function carregarQuestao() {
       radio.checked = true;
       radio.parentElement.classList.add('selected');
       respondidas.add(questaoAtual);
-      document.getElementById("respondidas").innerText = `${respondidas.size}/${questoes.length}`;
+      document.getElementById("respondidas").innerText = `${respondidas.size}/${questoesFiltradas.length}`;
     }
   }
 
@@ -100,8 +104,8 @@ function carregarQuestao() {
 
   // Atualiza seletor
   const seletor = document.getElementById('seletor');
-  if (seletor.options.length !== questoes.length) {
-    seletor.innerHTML = questoes.map((_, i) => `<option value="${i}">${i + 1}</option>`).join('');
+  if (seletor.options.length !== questoesFiltradas.length) {
+    seletor.innerHTML = questoesFiltradas.map((_, i) => `<option value="${i}">${i + 1}</option>`).join('');
   }
   seletor.value = questaoAtual;
 
@@ -126,7 +130,7 @@ function responder() {
   const valor = selecionado.value;
   localStorage.setItem(`resposta_${questaoAtual}`, valor);
   respondidas.add(questaoAtual);
-  document.getElementById("respondidas").innerText = `${respondidas.size}/${questoes.length}`;
+  document.getElementById("respondidas").innerText = `${respondidas.size}/${questoesFiltradas.length}`;
   alert("Resposta salva!");
 }
 
@@ -136,11 +140,11 @@ function limparResposta() {
   radios.forEach(r => r.checked = false);
   document.querySelectorAll('.options label').forEach(l => l.classList.remove('selected'));
   respondidas.delete(questaoAtual);
-  document.getElementById("respondidas").innerText = `${respondidas.size}/${questoes.length}`;
+  document.getElementById("respondidas").innerText = `${respondidas.size}/${questoesFiltradas.length}`;
 }
 
 function proximaQuestao() {
-  if (questaoAtual < questoes.length - 1) {
+  if (questaoAtual < questoesFiltradas.length - 1) {
     questaoAtual++;
     carregarQuestao();
   }
@@ -168,7 +172,7 @@ function finalizar() {
 
   const respostas = [];
 
-  questoes.forEach((q, i) => {
+  questoesFiltradas.forEach((q, i) => {
     const r = localStorage.getItem(`resposta_${i}`);
     if (r === null) {
       brancos++;
@@ -180,6 +184,7 @@ function finalizar() {
     respostas.push(r);
   });
 
+  localStorage.setItem('questoesFiltradas', JSON.stringify(questoesFiltradas));
   localStorage.setItem("resumo_resultado", JSON.stringify({ acertos, erros, brancos }));
   localStorage.setItem("tempo_total_final", tempoTotal);
   localStorage.setItem("respostas_usuario", JSON.stringify(respostas));
@@ -192,6 +197,3 @@ function finalizar() {
 // Inicialização Pagina de Questões
 iniciarTemporizadorGlobal();
 carregarQuestao();
-
-
-// ---------------------------------- Feedback ----------------------------------------
