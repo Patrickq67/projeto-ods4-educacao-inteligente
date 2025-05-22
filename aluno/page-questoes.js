@@ -45,17 +45,16 @@ function carregarQuestao() {
 
   // Texto da questão
   const perguntaEl = document.getElementById('pergunta');
-  perguntaEl.innerHTML = q.texto.replace(/\n/g, "<br>");
+  let textoQuestao = q.texto.replace(/\n/g, "<br>");
 
   // Imagem
   if (q.imagem) {
-    const img = document.createElement("img");
-    img.src = q.imagem;
-    img.alt = "Imagem da questão";
-    img.className = "questao-img";
-    perguntaEl.appendChild(document.createElement("br"));
-    perguntaEl.appendChild(img);
+    const imgTag = `<img src="${q.imagem}" alt="Imagem da questão" class="questao-img">`;
+    textoQuestao = textoQuestao.replace('[imagem]', imgTag);
   }
+
+perguntaEl.innerHTML = textoQuestao;
+
 
   // Temas
   const temas = document.createElement("div");
@@ -115,9 +114,10 @@ function carregarQuestao() {
 
   intervaloTempoQuestao = setInterval(() => {
     tempoQuestaoAtual++;
-    localStorage.setItem(`tempo_questao_${questaoAtual}`, tempoQuestaoAtual);
+    armazenarTempoQuestao(questaoAtual, tempoQuestaoAtual);
     tempoQuestaoDiv.innerHTML = `<strong>Tempo nesta questão:</strong> ${formatarTempo(tempoQuestaoAtual)}`;
-  }, 1000);
+}, 1000);
+
 }
 
 function responder() {
@@ -128,7 +128,7 @@ function responder() {
   }
 
   const valor = selecionado.value;
-  localStorage.setItem(`resposta_${questaoAtual}`, valor);
+  armazenarResposta(questaoAtual, valor);
   respondidas.add(questaoAtual);
   document.getElementById("respondidas").innerText = `${respondidas.size}/${questoesFiltradas.length}`;
   alert("Resposta salva!");
@@ -181,6 +181,9 @@ function finalizar() {
     } else {
       erros++;
     }
+
+    localStorage.setItem("tempo_total_final", tempoTotal);
+
     respostas.push(r);
   });
 
@@ -193,7 +196,49 @@ function finalizar() {
   window.location.href = "feedback-questoes.html";
 }
 
+function limpaQuestionario() {
+  // Zera o tempo total da prova
+  tempoTotal = 0;
+  localStorage.setItem("tempo_total", tempoTotal);
+
+  // Zera o tempo e as respostas de todas as questões filtradas
+  questoesFiltradas.forEach((_, i) => {
+    localStorage.removeItem(`tempo_questao_${i}`);
+    localStorage.removeItem(`resposta_${i}`);
+  });
+
+  // Remove também o resumo e resultados finais
+  localStorage.removeItem("resumo_resultado");
+  localStorage.removeItem("tempo_total_final");
+  localStorage.removeItem("respostas_usuario");
+
+  console.log("Questionário foi reiniciado: tempos e respostas limpos.");
+}
+
+
+function armazenarResposta(questaoIndex, valorResposta) {
+  localStorage.setItem(`resposta_${questaoIndex}`, valorResposta);
+  console.log(`Resposta da questão ${questaoIndex} armazenada: ${valorResposta}`);
+}
+
+function armazenarTempoQuestao(questaoIndex, tempo) {
+  localStorage.setItem(`tempo_questao_${questaoIndex}`, tempo);
+  console.log(`Tempo armazenado para questão ${questaoIndex}: ${tempo} segundos`);
+}
+
+function armazenarTempoTotal(tempo) {
+  localStorage.setItem("tempo_total", tempo);
+  console.log(`Tempo total armazenado: ${tempo} segundos`);
+}
+
+
+limpaQuestionario();
 
 // Inicialização Pagina de Questões
 iniciarTemporizadorGlobal();
 carregarQuestao();
+
+
+
+
+

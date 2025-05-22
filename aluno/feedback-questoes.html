@@ -16,29 +16,28 @@
 
   <main class="container">
     <section class="tempo-total">
-      <p>
-        <strong>⏱️ Tempo total da prova:</strong>
-        <span id="tempo-total">00:00:00</span>
-      </p>
+  <p>
+    <strong>⏱️ Tempo total da prova:</strong>
+    <span id="tempo-total">00:00:00</span>
+  </p>
+</section>
+
+
+
+    <button id="toggleIABtn">🤖 Mostrar análise IA</button>
+    <section class="ia-box container" id="iaBox" style="display: none;" aria-labelledby="ia-label">
+      <h2 id="ia-label">🔍 Análise Inteligente do Desempenho</h2>
+      <p>Com base nos seus resultados, nossa IA pode gerar um feedback personalizado para melhorar seus estudos.</p>
+      <textarea id="dadosDesempenhoIA" rows="6" aria-label="Dados de desempenho para análise"></textarea>
+      <button onclick="enviarParaIA()">Enviar para IA</button>
+      <div id="respostaIA">
+        <strong>📥 Feedback IA:</strong>
+        <p id="ia-output">Aguardando análise...</p>
+      </div>
     </section>
 
-    <section class="feedback-controls" aria-labelledby="filtro-label">
-      <h3 id="filtro-label" class="visually-hidden">Filtros de Classificação</h3>
-      <label for="filtro-classificacao">Mostrar classificação:</label>
-      <select id="filtro-classificacao">
-        <option value="geral">Geral</option>
-        <option value="especifica">Específica</option>
-        <option value="ambas" selected>Ambas</option>
-      </select>
-    </section>
-
-    <section class="feedback-questoes" aria-labelledby="feedback-questoes-label">
-      <h3 id="feedback-questoes-label" class="visually-hidden">Feedback das Questões</h3>
-      <div id="feedback-questoes"></div>
-    </section>
-  </main>
-
-  <section class="resumo-box container" aria-labelledby="resumo-label">
+    <button id="toggleResumoBtn">📊 Mostrar resumo</button>
+    <section class="resumo-box container" id="resumoBox" style="display: none;" aria-labelledby="resumo-label">
     <h2 id="resumo-label">Meu desempenho na prova</h2>
     <div class="resumo-content">
       <div class="resumo-info">
@@ -55,16 +54,21 @@
     </div>
   </section>
 
-  <section class="ia-box container" aria-labelledby="ia-label">
-    <h2 id="ia-label">🔍 Análise Inteligente do Desempenho</h2>
-    <p>Com base nos seus resultados, nossa IA pode gerar um feedback personalizado para melhorar seus estudos.</p>
-    <textarea id="dadosDesempenhoIA" rows="6" aria-label="Dados de desempenho para análise"></textarea>
-    <button onclick="enviarParaIA()">Enviar para IA</button>
-    <div id="respostaIA">
-      <strong>📥 Feedback IA:</strong>
-      <p id="ia-output">Aguardando análise...</p>
-    </div>
-  </section>
+    <section class="feedback-controls" aria-labelledby="filtro-label">
+      <h3 id="filtro-label" class="visually-hidden">Filtros de Classificação</h3>
+      <label for="filtro-classificacao">Mostrar classificação:</label>
+      <select id="filtro-classificacao">
+        <option value="geral">Geral</option>
+        <option value="especifica">Específica</option>
+        <option value="ambas" selected>Ambas</option>
+      </select>
+    </section>
+
+    <section class="feedback-questoes" aria-labelledby="feedback-questoes-label">
+      <h3 id="feedback-questoes-label" class="visually-hidden">Feedback das Questões</h3>
+      <div id="feedback-questoes"></div>
+    </section>
+  </main>
 
   <footer class="container">
     <button onclick="voltar()" class="btn-voltar">Voltar ao Início</button>
@@ -103,6 +107,33 @@
     });
   };
 </script>
+
+<script>
+  document.getElementById("toggleResumoBtn").addEventListener("click", () => {
+    const box = document.getElementById("resumoBox");
+    const btn = document.getElementById("toggleResumoBtn");
+    if (box.style.display === "none") {
+      box.style.display = "block";
+      btn.textContent = "📊 Ocultar resumo";
+    } else {
+      box.style.display = "none";
+      btn.textContent = "📊 Mostrar resumo";
+    }
+  });
+
+  document.getElementById("toggleIABtn").addEventListener("click", () => {
+    const box = document.getElementById("iaBox");
+    const btn = document.getElementById("toggleIABtn");
+    if (box.style.display === "none") {
+      box.style.display = "block";
+      btn.textContent = "🤖 Ocultar análise IA";
+    } else {
+      box.style.display = "none";
+      btn.textContent = "🤖 Mostrar análise IA";
+    }
+  });
+</script>
+
 
 
 

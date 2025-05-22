@@ -149,16 +149,21 @@
       color: #555;
     }
 
-    .questao-img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin: 20px auto;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+.questao-img {
+  display: block;
+  max-width: 80%;       /* Reduz um pouco para não ocupar 100% */
+  width: auto;          /* Mantém a largura natural se for menor que max-width */
+  height: auto;         /* Mantém a proporção */
+  margin: 20px auto;    /* Centraliza e dá espaçamento */
+  border: 1px solid #ddd;  /* Tom um pouco mais suave */
+  border-radius: 12px;     /* Cantos mais arredondados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Sombra um pouco mais suave e ampla */
+  transition: transform 0.2s ease;  /* Efeito suave ao interagir */
+}
 
-    
+.questao-img:hover {
+  transform: scale(1.02);  /* Leve aumento ao passar o mouse */
+}
+
 
 
