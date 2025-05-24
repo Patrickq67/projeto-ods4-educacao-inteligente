@@ -1,0 +1,275 @@
+:root {
+  --primary-color: #243b55;
+  --secondary-color: #141e30;
+  --accent-green: #4caf50;
+  --accent-red: #f44336;
+  --accent-gray: #e0e0e0;
+  --text-color: #333;
+  --background-color: #f7f9fc;
+  --white: #fff;
+  --border-color: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background: linear-gradient(
+    to right,
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  color: var(--white);
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+header h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.tempo-total {
+  margin-bottom: 20px;
+}
+
+.tempo-total p {
+  font-size: 15px;
+}
+
+.feedback-controls {
+  margin-bottom: 20px;
+}
+
+.feedback-controls label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.feedback-controls select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.feedback-questoes {
+  margin-bottom: 30px;
+}
+
+.question-feedback {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent-green);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question-feedback.erro {
+  border-left-color: var(--accent-red);
+}
+
+.question-feedback.branco {
+  border-left-color: var(--accent-gray);
+}
+
+.question-feedback h3 {
+  font-size: 16px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.question-feedback p {
+  margin-bottom: 8px;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.ok {
+  color: var(--accent-green);
+}
+
+.status.erro,
+.status.branco {
+  color: var(--accent-red);
+}
+
+.status.branco {
+  color: var(--accent-gray);
+}
+
+.classificacoes {
+  font-size: 14px;
+  color: #444;
+  margin-top: 10px;
+}
+
+.resumo-box {
+  background: var(--white);
+  border-top: 2px solid var(--border-color);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.resumo-box h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.resumo-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.resumo-info {
+  flex: 1;
+  min-width: 220px;
+  font-size: 14px;
+}
+
+.nota-final {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.grafico-container {
+  width: 250px;
+  max-width: 100%;
+}
+
+.ia-box {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+}
+
+.ia-box h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.ia-box textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.ia-box button {
+  padding: 10px 15px;
+  background: #2196f3;
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ia-box button:hover {
+  background: #1976d2;
+}
+
+#respostaIA {
+  background: #f1f1f1;
+  padding: 15px;
+  border-left: 4px solid #2196f3;
+  margin-top: 20px;
+}
+
+footer {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.btn-voltar {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-voltar:hover {
+  background: var(--secondary-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .resumo-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grafico-container {
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}
+
+
+#toggleResumoBtn,
+#toggleIABtn {
+  padding: 10px 16px;
+  margin-bottom: 15px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#toggleResumoBtn:hover,
+#toggleIABtn:hover {
+  background-color: #ddd;
+}

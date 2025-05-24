@@ -1,236 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Feedback</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f7f9fc;
-      color: #333;
-      margin: 0;
-    }
-
-    header {
-      background: linear-gradient(to right, #141E30, #243B55);
-      color: white;
-      padding: 20px 30px;
-    }
-
-    header h2 {
-      margin: 0;
-      font-size: 20px;
-    }
-
-    main {
-      padding: 30px;
-    }
-
-    .feedback-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .feedback-controls select {
-      padding: 5px 10px;
-    }
-
-    .question-feedback {
-      background: white;
-      border: 1px solid #ccc;
-      border-left: 5px solid #93cb52;
-      border-radius: 6px;
-      padding: 15px 20px;
-      margin-bottom: 20px;
-    }
-
-    .question-feedback.erro {
-      border-left-color: #d60000;
-    }
-
-    .question-feedback h3 {
-      margin-top: 0;
-      font-size: 16px;
-      color: #141E30;
-    }
-
-    .status {
-      font-weight: bold;
-      margin-top: 8px;
-    }
-
-    .status.ok {
-      color: #2e7d32;
-    }
-
-    .status.erro {
-      color: #d60000;
-    }
-
-    .classificacoes {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #444;
-    }
-
-    .resumo-box {
-      padding: 30px;
-      background: #fff;
-      border-top: 2px solid #ccc;
-    }
-
-    .resumo-box h2 {
-      margin-bottom: 20px;
-      color: #141E30;
-    }
-
-    .resumo-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .resumo-info {
-      font-size: 14px;
-      flex: 1;
-      min-width: 220px;
-    }
-
-    .resumo-info .nota-final {
-      font-size: 28px;
-      font-weight: bold;
-      color: #243B55;
-      margin-bottom: 10px;
-    }
-
-    .grafico-container {
-      width: 250px;
-      max-width: 100%;
-    }
-
-    .grafico-container canvas {
-      width: 100% !important;
-      height: auto !important;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma ODS4 - Feedback</title>
+  <link rel="stylesheet" href="css-aluno/styles-feedback.css">
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <h2>Plataforma ODS4 - Educação Personalizada - Feedback</h2>
+    <div class="container">
+      <h1>Plataforma ODS4 - Educação Personalizada</h1>
+      <h2>Feedback da Prova</h2>
+    </div>
   </header>
 
-  <!-- Main Content -->
-  <main>
-    <!-- Tempo total da prova -->
-    <p style="font-size: 15px; margin-bottom: 20px;">
-      <strong>⏱️ Tempo total da prova:</strong> 00:03:17
-    </p>
+  <main class="container">
+  <section class=>
+    <!-- Aqui ficara o Tempo Total da Prova -->
+     <p><strong>⏱️ Tempo total da prova: </strong><span class="tempo-total"></span></p>
+  </section>
 
-    <!-- Filtro de classificações -->
-    <div class="feedback-controls">
-      <label>Mostrar classificação:
-        <select id="filtro-classificacao">
-          <option value="geral">Geral</option>
-          <option value="especifica">Específica</option>
-          <option value="ambas" selected>Ambas</option>
-        </select>
-      </label>
-    </div>
 
-    <!-- Feedback das Questões -->
-    <div class="question-feedback acerto">
-      <h3>Questão 1 (UFRGS 2024)</h3>
-      <p>Qual o valor de x na equação 2x + 3 = 7?</p>
-      <p class="status ok">✅ Sua resposta está correta!</p>
-      <p><strong>Tempo gasto:</strong> 00:01:12</p>
-      <div class="classificacoes">
-        <strong>Classificação Geral:</strong> Equações<br>
-        <strong>Classificação Específica:</strong> Equações do 1º grau &gt; Isolamento de variável
+
+    <button id="toggleIABtn">🤖 Mostrar análise IA</button>
+    <section class="ia-box container" id="iaBox" style="display: none;" aria-labelledby="ia-label">
+      <h2 id="ia-label">🔍 Análise Inteligente do Desempenho</h2>
+      <p>Com base nos seus resultados, nossa IA pode gerar um feedback personalizado para melhorar seus estudos.</p>
+      <textarea id="dadosDesempenhoIA" rows="6" aria-label="Dados de desempenho para análise"></textarea>
+      <button onclick="enviarParaIA()">Enviar para IA</button>
+      <div id="respostaIA">
+        <strong>📥 Feedback IA:</strong>
+        <p id="ia-output">Aguardando análise...</p>
       </div>
-    </div>
+    </section>
 
-    <div class="question-feedback erro">
-      <h3>Questão 2 (UFRGS 2024)</h3>
-      <p>Qual a soma da PG infinita de razão 1/2 cujo primeiro termo é 4?</p>
-      <p class="status erro">❌ Você errou essa questão.</p>
-      <p><strong>Tempo gasto:</strong> 00:01:45</p>
-      <div class="classificacoes">
-        <strong>Classificação Geral:</strong> Progressões<br>
-        <strong>Classificação Específica:</strong> Progressões Geométricas &gt; Soma infinita da PG
-      </div>
-    </div>
-  </main>
-
-  <!-- Painel Resumo -->
-  <section class="resumo-box">
-    <h2>Meu desempenho na prova</h2>
+    <button id="toggleResumoBtn">📊 Mostrar resumo</button>
+    <section class="resumo-box container" id="resumoBox" style="display: none;" aria-labelledby="resumo-label">
+    <h2 id="resumo-label">Meu desempenho na prova</h2>
     <div class="resumo-content">
       <div class="resumo-info">
-        <div class="nota-final">0.25</div>
-        <p>Total de questões: <strong>15</strong></p>
-        <p>Questões que acertei: <strong style="color:green;">1</strong></p>
-        <p>Questões que errei: <strong style="color:red;">2</strong></p>
-        <p>Questões em branco: <strong style="color:#888;">3</strong></p>
-        <p>Aproveitamento: <strong style="color:blue;">17%</strong></p>
+        <div class="nota-final" id="nota-final">0.00</div>
+        <p>Total de questões: <strong id="total-questoes">15</strong></p>
+        <p>Questões que acertei: <strong class="acertos" id="acertos">0</strong></p>
+        <p>Questões que errei: <strong class="erros" id="erros">0</strong></p>
+        <p>Questões em branco: <strong class="branco" id="branco">0</strong></p>
+        <p>Aproveitamento: <strong class="aproveitamento" id="aproveitamento">0%</strong></p>
       </div>
       <div class="grafico-container">
-        <canvas id="graficoResumo"></canvas>
+        <canvas id="grafico-desempenho" aria-label="Gráfico de desempenho"></canvas>
       </div>
     </div>
   </section>
 
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <section class="feedback-controls" aria-labelledby="filtro-label">
+      <h3 id="filtro-label" class="visually-hidden">Filtros de Classificação</h3>
+      <label for="filtro-classificacao">Mostrar classificação:</label>
+      <select id="filtro-classificacao">
+        <option value="geral">Geral</option>
+        <option value="especifica">Específica</option>
+        <option value="ambas" selected>Ambas</option>
+      </select>
+    </section>
 
-  <!-- Script do Gráfico -->
+    <section class="feedback-questoes" aria-labelledby="feedback-questoes-label">
+      <h3 id="feedback-questoes-label" class="visually-hidden">Feedback das Questões</h3>
+      <div id="feedback-questoes"></div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <button onclick="voltar()" class="btn-voltar">Voltar ao Início</button>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="page-questoes.js"></script>
+  <script src="feedback-questoes.js"></script>
+
   <script>
-    const ctx = document.getElementById('graficoResumo').getContext('2d');
+  window.onload = function () {
+    const resumo = JSON.parse(localStorage.getItem("resumo_resultado"));
+    const tempo = parseInt(localStorage.getItem("tempo_total_final"));
+    const respostas = JSON.parse(localStorage.getItem("respostas_usuario"));
+    
+    document.getElementById("acertos").innerText = resumo.acertos;
+    document.getElementById("erros").innerText = resumo.erros;
+    document.getElementById("brancos").innerText = resumo.brancos;
+
+    const tempoStr = new Date(tempo * 1000).toISOString().substr(11, 8);
+    document.getElementById("tempo-total").innerText = tempoStr;
+
+    const total = resumo.acertos + resumo.erros + resumo.brancos;
+    const ctx = document.getElementById('grafico-desempenho').getContext('2d');
+
     new Chart(ctx, {
-      type: 'doughnut',
+      type: 'pie',
       data: {
-        labels: ['Acertos', 'Erros', 'Em branco'],
+        labels: ['Acertos', 'Erros', 'Brancos'],
         datasets: [{
-          label: 'Distribuição',
-          data: [1, 2, 3],
-          backgroundColor: ['#4CAF50', '#F44336', '#E0E0E0'],
-          borderWidth: 1
+          label: 'Desempenho',
+          data: [resumo.acertos, resumo.erros, resumo.brancos],
+          backgroundColor: ['#4CAF50', '#F44336', '#FFC107']
         }]
-      },
-      options: {
-        cutout: '60%',
-        plugins: {
-          legend: {
-            position: 'bottom'
-          }
-        }
       }
     });
-  </script>
+  };
+</script>
 
-  <!-- Script do Filtro -->
-  <script>
-    const selectFiltro = document.getElementById("filtro-classificacao");
-    const todas = document.querySelectorAll(".classificacoes");
+<script>
+  document.getElementById("toggleResumoBtn").addEventListener("click", () => {
+    const box = document.getElementById("resumoBox");
+    const btn = document.getElementById("toggleResumoBtn");
+    if (box.style.display === "none") {
+      box.style.display = "block";
+      btn.textContent = "📊 Ocultar resumo";
+    } else {
+      box.style.display = "none";
+      btn.textContent = "📊 Mostrar resumo";
+    }
+  });
 
-    selectFiltro.addEventListener("change", () => {
-      todas.forEach(div => {
-        const html = div.innerHTML;
-        const partes = html.split("<br>");
-        if (selectFiltro.value === "geral") {
-          div.innerHTML = partes[0];
-        } else if (selectFiltro.value === "especifica") {
-          div.innerHTML = partes[1];
-        } else {
-          div.innerHTML = partes.join("<br>");
-        }
-      });
-    });
-  </script>
+  document.getElementById("toggleIABtn").addEventListener("click", () => {
+    const box = document.getElementById("iaBox");
+    const btn = document.getElementById("toggleIABtn");
+    if (box.style.display === "none") {
+      box.style.display = "block";
+      btn.textContent = "🤖 Ocultar análise IA";
+    } else {
+      box.style.display = "none";
+      btn.textContent = "🤖 Mostrar análise IA";
+    }
+  });
+</script>
+
+
+
 
 </body>
 </html>

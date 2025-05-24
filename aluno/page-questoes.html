@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>UFRGS - Prova de Matemática</title>
+  <link rel="stylesheet" href="css-aluno/styles-page-questoes.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <header>
+    <div>Início > Provas</div>
+    <h2>Plataforma ODS4 - Educação Personalizada</h2>
+  </header>
+
+  <div class="top-bar">
+    <div class="left-info">
+      <div><strong>Tempo nesta questão:</strong> <span id="tempo-questao">00:00:00</span></div>
+      <div><strong>Questões respondidas:</strong> <span id="respondidas">0</span></div>
+    </div>
+    <div class="controls">
+      <div class="tempo-box">🛈 Tempo 00:00:00</div>
+      <button class="icon-button" title="Tela cheia">🗖</button>
+      <button class="icon-button" title="Modo escuro">🌙</button>
+      <button class="icon-button" title="Notas">📄</button>
+      <div class="font-size-box">
+        <button title="Aumentar fonte">A+</button>
+        <button title="Diminuir fonte">A-</button>
+      </div>
+      <button class="btn-finalizar" onclick="finalizar()">Finalizar Prova</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <div class="question-box">
+      <div class="question-text" id="pergunta"></div>
+      <div class="options" id="alternativas"></div>
+
+      <div class="bottom-nav">
+        <button class="btn-responder" onclick="responder()">Responder</button>
+        <div>
+          Ir para a questão: 
+          <select id="seletor" onchange="irParaQuestao(this.value)"></select>
+        </div>
+        <div>
+          <button onclick="voltarQuestao()">&larr;</button>
+          <button onclick="proximaQuestao()">&rarr;</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="dados/questoes.js"></script>
+  <script src="home-aluno.js"></script>
+  <script src="page-questoes.js"></script>
+
+</body>
+</html>
